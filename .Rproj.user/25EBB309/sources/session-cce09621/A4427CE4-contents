@@ -1,0 +1,60 @@
+---
+title: "RMARKDOWN, Assignment 1 in SDS 6103"
+author: "TK3"
+date: "2024-10-25"
+output:
+  html_document:
+    toc: yes
+    number_sections: true
+  pdf_document: 
+    toc: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+# Including Tabular Output from R
+
+```{r cars, echo=FALSE, }
+summary(cars)
+```
+
+# Generating Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+
+
+# EXPLORE THE USE OF R MARKDOWN ON SLIDE/PRESENTATIONS, R NOTEBOOK, INTERACTIVE GRAPHICS (SHINY/HTML WIDGETS)
+## R Markdown on Presentations
+
+### Presentation Formats in R Markdown
+
+R Markdown supports various presentation formats, each catering to different needs and preferences:
+
+ **a.HTML Presentations**:
+ioslides: Simple and clean HTML-based slides.
+Reveal.js: Feature-rich with transitions, themes, and interactivity.
+xaringan: Highly customizable using CSS and JavaScript (built on remark.js).
+
+**b.PDF Presentations**:
+Beamer: LaTeX-based, suitable for academic and professional presentations.
+
+**c. Microsoft PowerPoint**:
+Generate .pptx files directly from R Markdown.
+
+## Creating HTML Presentations
+*a. Using ioslides*
+YAML Header Example:
+---
+title: "Data Science Overview"
+author: "John Andrew"
+date: "2024-04-27"
+output: ioslides_presentation
+---

@@ -1,2 +1,4 @@
-git init  # Initializes Git in your project
-git remote add origin https://github.com/andyombogo/your-repository-name.git
+sum<- 2*2
+sum
+data<-100*5
+data
