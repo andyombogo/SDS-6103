@@ -1,0 +1,2 @@
+git init  # Initializes Git in your project
+git remote add origin https://github.com/andyombogo/your-repository-name.git

@@ -1,0 +1,207 @@
+
+---
+title: "R Markdown - Assignment 3 in SDS 6103"
+author: "John Andrew"
+date: "2024-11-05"
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+    code_folding: hide
+  word_document:
+    toc: true
+    toc_depth: '2'
+  pdf_document:
+    toc: true
+    toc_depth: 2
+    number_sections: true
+    latex_engine: xelatex
+fontsize: 13pt
+geometry: margin=1in
+always_allow_html: true
+---
+
+---
+
+# Illustration of R Markdown Capabilities
+
+## Exploring the Use of R Markdown for Presentations, Notebooks, and Interactive Graphics
+
+This document explores how R Markdown can be used to create presentations, notebooks, and interactive graphics, along with examples for each.
+
+---
+
+## R Markdown for Presentations
+
+R Markdown supports creating various types of presentations:
+
+1. **HTML Presentations**:
+   - **ioslides**: Simple and clean HTML-based slides.
+   - **Reveal.js**: Rich with themes, transitions, and interactivity.
+   - **xaringan**: Highly customizable, built on `remark.js`.
+
+2. **PDF Presentations**:
+   - **Beamer**: LaTeX-based, suitable for academic and professional presentations.
+
+3. **Microsoft PowerPoint**:
+   - Directly generate `.pptx` files from R Markdown.
+
+### Creating an HTML Presentation with ioslides
+
+Example YAML header for ioslides:
+
+```yaml
+---
+title: "Data Analytics Overview"
+author: "John Andrew"
+output: ioslides_presentation
+---
+```
+
+This will create a basic HTML slide deck with ioslides.
+
+---
+
+### Creating a PDF Presentation with Beamer
+
+Example YAML header for Beamer:
+
+```yaml
+---
+title: "Statistical Analysis"
+author: "John Andrew"
+output: beamer_presentation
+---
+```
+
+This setup will generate a Beamer PDF presentation with numbered sections.
+
+---
+
+### Creating a PowerPoint Presentation
+
+Example YAML header for PowerPoint:
+
+```yaml
+---
+title: "Business Intelligence"
+author: "John Andrew"
+output: powerpoint_presentation
+---
+```
+
+This setup outputs directly to a `.pptx` file.
+
+---
+
+## Interactive Graphics with Shiny and HTML Widgets
+
+R Markdown can produce interactive graphics using:
+- **Shiny**: R's web framework for dynamic, reactive content.
+- **HTML Widgets**: A collection of R packages for embedding interactive JavaScript widgets like `plotly` and `leaflet`.
+
+### Interactive Plot Example (HTML Only)
+
+To ensure compatibility with both HTML and PDF, the code is in HTML output.
+
+```{r, eval = knitr::is_html_output()}
+library(plotly)
+plot_ly(data = mtcars, x = ~mpg, y = ~hp, type = 'scatter', mode = 'markers')
+```
+
+If i render as HTML, this chunk will display an interactive Plotly scatter plot.
+
+---
+
+### Interactive Map with Leaflet (HTML Only)
+
+```{r, eval = knitr::is_html_output()}
+library(leaflet)
+leaflet() %>%
+  addTiles() %>%
+  addMarkers(lng = -122.4194, lat = 37.7749, popup = "San Francisco")
+```
+
+---
+
+## R Notebooks in R Markdown
+
+An R Notebook is an extension of R Markdown that supports inline execution and interactive analysis.
+
+### Inline Plotting in R Notebook
+
+```{r}
+plot(mtcars$mpg, mtcars$hp, 
+     main = "Miles per Gallon vs Horsepower",
+     xlab = "Miles per Gallon", 
+     ylab = "Horsepower")
+```
+
+### Using HTML Widgets in R Notebook (HTML Only)
+
+```{r, eval = knitr::is_html_output()}
+library(DT)
+datatable(mtcars)
+```
+
+---
+
+## Caching in R Notebooks
+
+R Notebooks support caching, which saves results of computationally expensive code chunks.
+
+```{r cache=TRUE}
+Sys.sleep(5)  # Simulate a long computation
+sum(rnorm(1e6))
+```
+
+---
+
+## Parameterized Reports in R Notebooks
+
+Example YAML for parameterized reports:
+
+```yaml
+---
+title: "Parameterized Report"
+output: html_notebook
+params:
+  sample_size: 20
+  region: "West"
+---
+```
+
+This feature allows flexible, dynamic reports based on parameter values.
+
+---
+
+## Using Other Language Engines in R Markdown
+
+R Markdown supports different programming languages.
+
+### Python Example (Illustrative Only)
+
+```{python, eval=FALSE}
+# Python calculation example
+x = 10
+y = 5
+result = x * y
+result
+```
+
+### SQL Example (Illustrative Only)
+
+```{sql, eval=FALSE}
+-- SQL query example
+SELECT * FROM mtcars WHERE mpg > 20
+```
+
+### Bash Example (Illustrative Only)
+
+```{bash, eval=FALSE}
+# Bash command example
+ls -l
+```
+
+---
+
